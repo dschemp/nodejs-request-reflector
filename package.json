@@ -1,0 +1,14 @@
+{
+  "name": "nodejs-request-reflector",
+  "version": "1.0.0",
+  "description": "Reflect requests back to the sender",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "author": "Daniel Schemp (GitHub: dschemp)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
