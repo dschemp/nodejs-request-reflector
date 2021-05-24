@@ -18,14 +18,19 @@ var options = {
 
 /* Pass request bodies as Json */
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 /* Extract information out of every request towards this server */
 app.use((req, res) => {
     let obj = {
         connection: {
+            protocol: req.protocol,
             isSecure: req.secure.valueOf(),
+            originalUrl: req.originalUrl,
+            hostname: req.hostname,
+            httpVersion: req.httpVersion,
         },
-        header: {
+        request: {
             method: req.method,
             path: req.path,
             query: req.query,
@@ -36,7 +41,8 @@ app.use((req, res) => {
     console.debug(obj);
 
     /* send request data as Json back */
-    res.contentType("json").json(obj);
+    res.contentType("json")
+        .json(obj);
 });
 
 /* Init HTTP and HTTPS servers */
